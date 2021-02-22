@@ -9,18 +9,18 @@ const NameList = () => {
     const [names, setNames] = useState([]);
 
     useEffect(() => {
-            setNames(context.names);
+        setNames(context.names);
     }, []);
 
     const removeItem = (index) => {
         names.splice(index, 1);
-        context.names.splice(index, 1);
+        context.setNames([...names]);
         setNames([...names]);
     };
 
     return (
         <ul className="namesList">
-            {names.map((human, index) => human.selected && <div key={index} className="nameItemDiv"><li className="nameItem" >{human.name}</li><div className="closeButton"><Button value="X" onClick={() => removeItem(index)} /></div></div>)}
+            {names.length > 0 && names.map((human, index) => human.selected && <div key={index} className="nameItemDiv"><li className="nameItem" >{human.name}</li><div className="closeButton"><Button value="X" onClick={() => removeItem(index)} /></div></div>)}
         </ul>
     );
 };

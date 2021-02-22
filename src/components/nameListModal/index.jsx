@@ -12,7 +12,7 @@ const NameListModal = ({ setShowModal }) => {
     const { defaultNames, setDefaultNames } = useContext(DefaultContext);
 
     useEffect(() => {
-            setInputSelected([...names]);
+        setInputSelected([...names]);
     }, []);
 
     const inputCheckboxClick = (key) => {
@@ -32,10 +32,8 @@ const NameListModal = ({ setShowModal }) => {
 
     const onClickApplyHelper = () => {
         for (let index = 0; index < defaultNames.length; index++) {
-            inputSelected.map(item => {
-                if (item.key === defaultNames[index].key) {
-                    defaultNames[index].selected = item.selected;
-                };
+            inputSelected.find((element) => {
+                if (element.key === defaultNames[index].key) defaultNames[index].selected = element.selected;
             });
         };
         setDefaultNames([...defaultNames]);
@@ -48,10 +46,8 @@ const NameListModal = ({ setShowModal }) => {
 
     const onClickCancelHelper = () => {
         for (let index = 0; index < defaultNames.length; index++) {
-            inputSelected.map(item => {
-                if (item.key === defaultNames[index].key) {
-                    item.selected = defaultNames[index].selected;
-                };
+            inputSelected.find((element) => {
+                if (element.key === defaultNames[index].key) element.selected = defaultNames[index].selected;
             });
         };
         setInputSelected([...inputSelected]);
