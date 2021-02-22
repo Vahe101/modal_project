@@ -33,7 +33,8 @@ const NameListModal = ({ setShowModal }) => {
     const onClickApplyHelper = () => {
         for (let index = 0; index < defaultNames.length; index++) {
             inputSelected.find((element) => {
-                if (element.key === defaultNames[index].key) defaultNames[index].selected = element.selected;
+                const isEqual = (element.key === defaultNames[index].key);
+                if (isEqual) defaultNames[index].selected = element.selected;
             });
         };
         setDefaultNames([...defaultNames]);
@@ -47,7 +48,8 @@ const NameListModal = ({ setShowModal }) => {
     const onClickCancelHelper = () => {
         for (let index = 0; index < defaultNames.length; index++) {
             inputSelected.find((element) => {
-                if (element.key === defaultNames[index].key) element.selected = defaultNames[index].selected;
+                const isEqual = (element.key === defaultNames[index].key);
+                if (isEqual) element.selected = defaultNames[index].selected;
             });
         };
         setInputSelected([...inputSelected]);

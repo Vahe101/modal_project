@@ -12,12 +12,12 @@ const Container = () => {
   const value = {
     names: names,
     setNames: setNames,
-  }
+  };
 
   const defaultValue = {
     defaultNames: defaultNames,
     setDefaultNames: setDefaultNames,
-  }
+  };
 
   return (
     <NamesListContext.Provider value={value}>
