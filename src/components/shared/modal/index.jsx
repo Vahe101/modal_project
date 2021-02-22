@@ -10,9 +10,7 @@ const Modal = () => {
     const [modalStyle, setModalStyle] = useState();
 
     useEffect(() => {
-        if (!modalStyle) {
-            setModalStyle(getModalStyle());
-        };
+        setModalStyle(getModalStyle());
     }, []);
 
     const getModalStyle = () => ({

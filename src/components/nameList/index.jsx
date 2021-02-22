@@ -9,9 +9,7 @@ const NameList = () => {
     const [names, setNames] = useState([]);
 
     useEffect(() => {
-        if (names.length === 0) {
             setNames(context.names);
-        };
     }, []);
 
     const removeItem = (index) => {

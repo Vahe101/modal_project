@@ -12,9 +12,7 @@ const NameListModal = ({ setShowModal }) => {
     const { defaultNames, setDefaultNames } = useContext(DefaultContext);
 
     useEffect(() => {
-        if (inputSelected.length === 0) {
             setInputSelected([...names]);
-        };
     }, []);
 
     const inputCheckboxClick = (key) => {
