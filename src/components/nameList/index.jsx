@@ -22,7 +22,7 @@ const NameList = () => {
 
     return (
         <ul className="namesList">
-            {names.map((human, index) => human.visible && <div key={index} className="nameItemDiv"><li className="nameItem" >{human.name}</li><div className="closeButton"><Button value="X" onClick={() => removeItem(index)} /></div></div>)}
+            {names.map((human, index) => human.selected && <div key={index} className="nameItemDiv"><li className="nameItem" >{human.name}</li><div className="closeButton"><Button value="X" onClick={() => removeItem(index)} /></div></div>)}
         </ul>
     );
 };

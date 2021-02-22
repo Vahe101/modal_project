@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import ThemeContext from "../shared/Contexts";
+import namesListContext from "../shared/Contexts";
 import DefaultContext from "../shared/Contexts/DefaultContext";
 import Input from "../shared/input";
 import ModalButtons from "../modalPageButtons";
@@ -7,36 +7,36 @@ import ModalButtons from "../modalPageButtons";
 import "./index.scss";
 
 const NameListModal = ({ setShowModal }) => {
-    const [inputVisible, setInputVisible] = useState([]);
-    const { names, setNames } = useContext(ThemeContext);
+    const [inputSelected, setInputSelected] = useState([]);
+    const { names, setNames } = useContext(namesListContext);
     const { defaultNames, setDefaultNames } = useContext(DefaultContext);
 
     useEffect(() => {
-        if (inputVisible.length === 0) {
-            setInputVisible([...names]);
+        if (inputSelected.length === 0) {
+            setInputSelected([...names]);
         };
     }, []);
 
     const inputCheckboxClick = (key) => {
-        inputVisible.map(item => {
+        inputSelected.map(item => {
             if (item.key === key) {
-                item.visible = !item.visible;
+                item.selected = !item.selected;
             };
         });
-        setInputVisible([...inputVisible]);
+        setInputSelected([...inputSelected]);
     };
 
     const onClickApply = () => {
-        setNames([...inputVisible]);
+        setNames([...inputSelected]);
         onClickApplyHelper();
         setShowModal(false);
     };
 
     const onClickApplyHelper = () => {
         for (let index = 0; index < defaultNames.length; index++) {
-            inputVisible.map(item => {
+            inputSelected.map(item => {
                 if (item.key === defaultNames[index].key) {
-                    defaultNames[index].visible = item.visible;
+                    defaultNames[index].selected = item.selected;
                 };
             });
         };
@@ -50,19 +50,19 @@ const NameListModal = ({ setShowModal }) => {
 
     const onClickCancelHelper = () => {
         for (let index = 0; index < defaultNames.length; index++) {
-            inputVisible.map(item => {
+            inputSelected.map(item => {
                 if (item.key === defaultNames[index].key) {
-                    item.visible = defaultNames[index].visible;
+                    item.selected = defaultNames[index].selected;
                 };
             });
         };
-        setInputVisible([...inputVisible]);
+        setInputSelected([...inputSelected]);
     };
 
     return (
         <div>
             <ul className="namesList">
-                {inputVisible.length > 0 && inputVisible.map((human, index) => <div className="nameItemDiv" key={index} ><li className="nameItem">{human.name}</li><div><Input type="checkbox" isChecked={human.visible} className="checkboxInputs" onClick={() => inputCheckboxClick(human.key)} /></div></div>)}
+                {inputSelected.length > 0 && inputSelected.map((human, index) => <div className="nameItemDiv" key={index} ><li className="nameItem">{human.name}</li><div><Input type="checkbox" isChecked={human.selected} className="checkboxInputs" onClick={() => inputCheckboxClick(human.key)} /></div></div>)}
             </ul>
             <ModalButtons onClickApply={onClickApply} onClickCancel={onClickCancel} />
         </div>

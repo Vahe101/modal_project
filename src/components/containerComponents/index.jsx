@@ -22,8 +22,8 @@ const Container = () => {
   return (
     <ThemeContext.Provider value={value}>
       <DefaultContext.Provider value={defaultValue}>
-        <div><Modal /></div>
-        <div><NameList /></div>
+        <Modal />
+        <NameList />
       </DefaultContext.Provider>
     </ThemeContext.Provider>
   );

@@ -1,5 +1,5 @@
 import { createContext } from 'react';
  
-const ThemeContext = createContext();
+const namesListContext = createContext();
  
-export default ThemeContext;
+export default namesListContext;
