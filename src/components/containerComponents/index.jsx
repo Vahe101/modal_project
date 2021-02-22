@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ThemeContext from "../shared/Contexts";
+import NamesListContext from "../shared/Contexts";
 import DefaultContext from "../shared/Contexts/DefaultContext";
 import NameList from "../nameList";
 import Modal from "../shared/modal";
@@ -20,12 +20,12 @@ const Container = () => {
   }
 
   return (
-    <ThemeContext.Provider value={value}>
+    <NamesListContext.Provider value={value}>
       <DefaultContext.Provider value={defaultValue}>
         <Modal />
         <NameList />
       </DefaultContext.Provider>
-    </ThemeContext.Provider>
+    </NamesListContext.Provider>
   );
 };
 
